@@ -112,7 +112,8 @@ class SearchTableViewCell: UITableViewCell {
     let detailStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
+        stack.distribution = .equalSpacing
+        stack.spacing = 16
         stack.alignment = .center
         return stack
     }()
@@ -165,6 +166,11 @@ class SearchTableViewCell: UITableViewCell {
             make.width.equalTo(72)
             make.height.equalTo(32)
         }
+        
+        sellerNameLabel.snp.makeConstraints { make in
+            make.width.equalTo(contentView).multipliedBy(0.25)
+        }
+        
         detailStackView.snp.makeConstraints { make in
             make.top.equalTo(appIconImageView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
